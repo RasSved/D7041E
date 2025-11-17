@@ -2,7 +2,8 @@
 import gensim, logging, numpy as np
 import help_functions as hf
 import nltk
-
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 #@author: The first version of this code is the courtesy of Vadim Selyanik
 
 
@@ -10,13 +11,13 @@ logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=lo
 lemmatizer = nltk.WordNetLemmatizer() # create a lemmatizer
 
 sentences = []
-file = open("lemmatized.text", "r")
+file = open(r"D:\PLUGGET\D7041E\Labs\D7041E\Lab1\Part2_NLP\GensimW2V\lemmatized.text", "r")
 
 for line in file: # read the file and create list which contains all sentences found in the text
     sentences.append(line.split())
 # train word2vec on the two sentences
 
-dimension = 50 # parameter for Word2vec size of vectors for word embedding
+dimension = 5000 # parameter for Word2vec size of vectors for word embedding
 
 threshold = 0.00055 # parameter for Word2vec
 
@@ -32,7 +33,7 @@ print(len(words)) # check the length of the vocabulary which was formed by Word2
 #The rest implements passing TOEFL tests
 i = 0 #counter for TOEFL tests
 number_of_tests = 80
-text_file = open('new_toefl.txt', 'r')
+text_file = open(r"D:\PLUGGET\D7041E\Labs\D7041E\Lab1\Part2_NLP\GensimW2V\new_toefl.txt", 'r')
 right_answers = 0 # variable for correct answers
 number_skipped_tests = 0 # some tests could be skipped if there are no corresponding words in the vocabulary extracted from the training corpus
 while i < number_of_tests:

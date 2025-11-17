@@ -5,18 +5,16 @@ import nltk
 #@author: The first version of this code is the courtesy of Vadim Selyanik
 
 threshold = 15000 # Frequency threshold in the corpus ??
-dimension = 2000 # Dimensionality for high-dimensional vectors
+dimension = 8000 # Dimensionality for high-dimensional vectors
 lemmatizer = nltk.WordNetLemmatizer()  # create an instance of lemmatizer
 ones_number = 2 # number of nonzero elements in randomly generated high-dimensional vectors
 window_size = 2 #number of neighboring words to consider both back and forth. In other words number of words before/after current word
 zero_vector = np.zeros(dimension)
-test_name = "new_toefl.txt" # file with TOEFL dataset
-data_file_name = "lemmatized.text" # file with the text corpus
 
 amount_dictionary = {}
 
 # Count how many times each word appears in the corpus
-text_file = open(data_file_name, "r")
+text_file = open(r"D:\PLUGGET\D7041E\Labs\D7041E\Lab1\Part2_NLP\RI\lemmatized.text", "r")
 for line in text_file:
     if line != "\n":
         words = line.split()
@@ -34,7 +32,7 @@ word_space = {} #embedings
 
 
 #Create a dictionary with the assigned random high-dimensional vectors
-text_file = open(data_file_name, "r")
+text_file = open(r"D:\PLUGGET\D7041E\Labs\D7041E\Lab1\Part2_NLP\RI\lemmatized.text", "r")
 for line in text_file: #read line in the file
     words = line.split() # extract words from the line
     for word in words:  # for each word
@@ -51,7 +49,7 @@ text_file.close()
 
     #Find all unique words amongst TOEFL tasks and initialize their embeddings to zeros    
 number_of_tests = 0
-text_file = open(test_name, "r") #open TOEFL tasks
+text_file = open(r"D:\PLUGGET\D7041E\Labs\D7041E\Lab1\Part2_NLP\RI\new_toefl.txt", "r") #open TOEFL tasks
 for line in text_file:
         words = line.split()
         words = [lemmatizer.lemmatize(lemmatizer.lemmatize(lemmatizer.lemmatize(word, 'v'), 'n'), 'a') for word in
@@ -66,7 +64,7 @@ text_file.close()
 
 
     # Processing the text to build the embeddings 
-text_file = open(data_file_name, "r")
+text_file = open(r"D:\PLUGGET\D7041E\Labs\D7041E\Lab1\Part2_NLP\RI\lemmatized.text", "r")
 lines = [[],[],[],[]] # neighboring lines
 i = 2
 while i < 4:
@@ -138,7 +136,7 @@ while line != "":
 #Testing of the embeddings on TOEFL
 a = 0.0 # accuracy of the encodings    
 i = 0
-text_file = open(test_name, 'r')
+text_file = open(r"D:\PLUGGET\D7041E\Labs\D7041E\Lab1\Part2_NLP\RI\new_toefl.txt", 'r')
 right_answers = 0.0 # variable for correct answers
 number_skipped_tests = 0.0 # some tests could be skipped if there are no corresponding words in the vocabulary extracted from the training corpus
 while i < number_of_tests:
