@@ -1,2 +1,4 @@
-# D7041E
-Applied AI Labs
+# Lab 1
+
+## Instructions
+[Open Instructions PDF](./Lab1_Instructions.pdf)
